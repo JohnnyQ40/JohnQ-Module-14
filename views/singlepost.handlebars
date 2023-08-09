@@ -1,0 +1,13 @@
+<h2>{{post.title}}</h2>
+<p>{{post.content}}</p>
+
+{{#if loggedIn}}
+<form action="/posts/{{post.id}}/comments" method="POST">
+  <textarea name="content"></textarea>
+  <button type="submit">Post Comment</button>
+</form>
+{{/if}}
+
+{{#each comments as |comment|}}
+  <p>{{comment.content}}</p>
+{{/each}}

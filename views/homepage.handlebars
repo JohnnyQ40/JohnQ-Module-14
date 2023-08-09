@@ -1,0 +1,23 @@
+{{#each blogs}}
+<div class="post-section">
+<h2>{{this.title}}</h2>
+<p>{{this.content}}</p>
+<p>Author: {{this.user.username}}</p>
+</div>
+
+{{#each this.comments}}
+    <div class="comment">
+        <p>{{this.content}}</p>
+        <p>Comment by: {{this.user.username}}</p>
+    </div>
+{{/each}}
+
+<form action="/comments" method="POST">
+    <input type="hidden" name="blog_id" value="{{this.id}}" />
+    <div class="mb-3">
+        <label for="comment{{this.id}}" class="form-label">Leave a comment:</label>
+        <textarea class="form-control" id="comment{{this.id}}" name="content" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{{/each}}
